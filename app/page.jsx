@@ -7,6 +7,7 @@ export default function Home() {
   const [selectedMovie, setSelectedMovie] = useState("");
   const [recommendations, setRecommendations] = useState([]);
   const [loading, setLoading] = useState(false);
+const [showDropdown, setShowDropdown] = useState(false);
 
   const API_URL =
     process.env.NEXT_PUBLIC_API_URL ||
@@ -94,27 +95,46 @@ export default function Home() {
               Find Similar Movies
             </h2>
 
-            <select
-              value={selectedMovie}
-             
-              onChange={(e) =>{ setSelectedMovie(e.target.value)
-                setRecommendations([])}
-              }
-              className="w-full bg-black/40 border border-zinc-700 rounded-2xl p-4 outline-none focus:border-red-500"
-            >
-              <option value="">
-                Choose a Movie...
-              </option>
+          <div className="relative w-full">
+  {/* INPUT */}
+  <input
+    type="text"
+    value={selectedMovie}
+    onChange={(e) => {
+      setSelectedMovie(e.target.value);
+      setShowDropdown(true);
+      setRecommendations([]);
+    }}
+    onFocus={() => setShowDropdown(true)}
+    onBlur={() => setTimeout(() => setShowDropdown(false), 150)}
+    placeholder="Search movie..."
+    className="w-full bg-black/40 border border-zinc-700 rounded-2xl p-4 outline-none focus:border-red-500"
+  />
 
-              {movies.map((movie, index) => (
-                <option
-                  key={index}
-                  value={movie}
-                >
-                  {movie}
-                </option>
-              ))}
-            </select>
+  {/* DROPDOWN */}
+  {showDropdown && selectedMovie && (
+    <ul className="absolute z-50 w-full bg-black/90 border border-zinc-700 rounded-2xl mt-2 max-h-60 overflow-auto">
+      {movies
+        .filter((movie) =>
+          movie.toLowerCase().includes(selectedMovie.toLowerCase())
+        )
+        .slice(0, 8)
+        .map((movie, index) => (
+          <li
+            key={index}
+            onMouseDown={() => {
+              setSelectedMovie(movie);
+              setShowDropdown(false);
+              setRecommendations([]);
+            }}
+            className="p-3 hover:bg-red-600 cursor-pointer"
+          >
+            {movie}
+          </li>
+        ))}
+    </ul>
+  )}
+</div>
 
             <button
               onClick={getRecommendations}
