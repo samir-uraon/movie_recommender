@@ -146,8 +146,8 @@ export default function Home() {
 
       {/* LOADING */}
       {loading && (
-        <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pb-20">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-8">
+        <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pb-20 mb-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5 md:gap-4 sm:gap-8">
             {[...Array(5)].map((_, i) => (
               <div
                 key={i}
@@ -166,7 +166,7 @@ export default function Home() {
             Recommended For You
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5 md:gap-4 gap-y-8 sm:gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5 md:gap-4 sm:gap-8">
 
             {recommendations.map((movie, i) => (
               <div
@@ -188,36 +188,36 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition duration-500" />
 
-                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 translate-y-full group-hover:translate-y-0 transition duration-500">
-                  <h3 className="font-bold text-base sm:text-lg">
-                    {movie.title}
-                  </h3>
+<div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 translate-y-0 sm:translate-y-full sm:group-hover:translate-y-0 transition duration-500">
+  <h3 className="font-bold text-base sm:text-lg">
+    {movie.title}
+  </h3>
 
-                  <p className="text-yellow-400 text-xs sm:text-sm mt-1">
-                    ⭐ Rating: {movie.rating || "N/A"}
-                  </p>
+  <p className="text-yellow-400 text-xs sm:text-sm mt-1">
+    ⭐ Rating: {movie.rating || "N/A"}
+  </p>
 
-                  <button
-                    onClick={() =>
-                      window.open(
-                        "https://new1.hdhub4u.cl/search.html?q=" +
-                          movie.title
-                      )
-                    }
-                    className="mt-3 px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-sm"
-                  >
-                    Watch Now
-                  </button>
-                </div>
+  <button
+    onClick={() =>
+      window.open(
+        "https://new1.hdhub4u.cl/search.html?q=" +
+          movie.title
+      )
+    }
+    className="mt-3 px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-sm"
+  >
+    Watch Now
+  </button>
+</div>
               </div>
             ))}
 
           </div>
 
           {/* SHOW MORE */}
-          <div className="w-full flex justify-center mt-12 sm:mt-20">
+          <div className="w-full flex justify-center mt-8 sm:mt-15">
             <button
               className="w-full sm:w-auto rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-3 text-white font-semibold
               hover:opacity-90 active:scale-95 transition-all shadow-lg"
@@ -236,7 +236,7 @@ export default function Home() {
       )}
 
       {/* FOOTER */}
-      <footer className="relative z-1 border-t border-white/10 py-6 sm:py-8 text-center text-zinc-500 text-sm sm:text-base">
+      <footer className="absolute bottom-1 flex justify-center w-full z-1  py-5 sm:py-7 text-center text-zinc-500 text-sm sm:text-base">
         Built with Next.js • FastAPI • Machine Learning
       </footer>
 
