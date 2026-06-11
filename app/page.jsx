@@ -236,7 +236,7 @@ export default function Home() {
       )}
 
       {/* FOOTER */}
-      <footer className="relative z-10 border-t border-white/10 py-6 sm:py-8 text-center text-zinc-500 text-sm sm:text-base">
+      <footer className="relative z-1 border-t border-white/10 py-6 sm:py-8 text-center text-zinc-500 text-sm sm:text-base">
         Built with Next.js • FastAPI • Machine Learning
       </footer>
 
