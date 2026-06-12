@@ -24,7 +24,7 @@ export default function Home() {
     };
 
     fetchMovies();
-  }, [API_URL]);
+  }, []);
 
   const getRecommendations = async () => {
     if (!selectedMovie) return;
